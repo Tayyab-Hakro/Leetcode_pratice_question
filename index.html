@@ -1,28 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Factorial Calculator</title>
+  <title>Password Strength Checker</title>
 </head>
 <body>
-  <h2>Factorial Calculator</h2>
-  <input type="number" id="number" placeholder="Enter a number">
-  <button onclick="calculateFactorial()">Calculate</button>
-  <p id="result"></p>
+  <h2>Enter your password</h2>
+  <input type="text" id="password" placeholder="Type password..." />
+  <button onclick="checkStrength()">Check Strength</button>
+  <p id="strength"></p>
 
   <script>
-    function calculateFactorial() {
-      let num = document.getElementById("number").value; // ❌ Bug 1: Typo in method name
-      if (num < 0) {
-        document.getElementById("result").innerHTML = "Factorial not possible for negative number";
-        return;
+    function checkStrength() {
+      const pwd = document.getElementById("password").value;
+      let strength = "Weak";
+
+      if (pwd.length >= 8) {
+        strength = "Medium";
       }
 
-      let fact = 1;
-      for (let i = 1; i <= num; i++){ // ❌ Bug 2: Wrong increment/decrement logic
-        fact *= i;
+      if (pwd.length >= 8 && /[A-Z]/.test(pwd) && /[0-9]/.test(pwd)) {
+        strength = "Strong";
       }
 
-      document.getElementById("result").textContent = "Factorial of " + num + " is " + fact; // ❌ Bug 3: Wrong property
+      if (pwd.length < 6 || !/[a-z]/.test(pwd)) {
+        strength = "Very Weak";
+      }
+
+      document.getElementById("strength").innerText = "Strength: " + strength;
     }
   </script>
 </body>
