@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Factorial Calculator</title>
+</head>
+<body>
+  <h2>Factorial Calculator</h2>
+  <input type="number" id="number" placeholder="Enter a number">
+  <button onclick="calculateFactorial()">Calculate</button>
+  <p id="result"></p>
+
+  <script>
+    function calculateFactorial() {
+      let num = document.getElementById("number").value; // ❌ Bug 1: Typo in method name
+      if (num < 0) {
+        document.getElementById("result").innerHTML = "Factorial not possible for negative number";
+        return;
+      }
+
+      let fact = 1;
+      for (let i = 1; i <= num; i++){ // ❌ Bug 2: Wrong increment/decrement logic
+        fact *= i;
+      }
+
+      document.getElementById("result").textContent = "Factorial of " + num + " is " + fact; // ❌ Bug 3: Wrong property
+    }
+  </script>
+</body>
+</html>
