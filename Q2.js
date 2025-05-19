@@ -1,14 +1,9 @@
-/**
- * @param {number[]} nums
- * @return {number}
- */
 var maximumCount = function(nums) {
-let first = nums.filter((item) => item < 0).length
-let second = nums.filter((item) => item >= 1).length
-return Math.max(first , second)
-};
+    // Find the count of positives (first index >= 1)
+    let posCount = nums.length - binarySearch(nums, 1);
 
-    
-console.log(maximumCount([-2,-1,-1,1,2,3]))
-console.log(maximumCount( [-3,-2,-1,0,0,1,2]))
-console.log(maximumCount([5,20,66,1314]))
+    // Find the count of negatives (first index >= 0)
+    let negCount = binarySearch(nums, 0);
+
+    return Math.max(posCount, negCount);
+}
