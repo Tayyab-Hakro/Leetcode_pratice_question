@@ -1,32 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Password Strength Checker</title>
+  <title>Countdown Timer</title>
 </head>
 <body>
-  <h2>Enter your password</h2>
-  <input type="text" id="password" placeholder="Type password..." />
-  <button onclick="checkStrength()">Check Strength</button>
-  <p id="strength"></p>
+  <h2>Countdown Timer</h2>
+  <input type="number" id="seconds" placeholder="Enter seconds" />
+  <button onclick="startCountdown()">Start</button>
+  <p id="timer">Timer will appear here...</p>
 
   <script>
-    function checkStrength() {
-      const pwd = document.getElementById("password").value;
-      let strength = "Weak";
+    let interval;
 
-      if (pwd.length >= 8) {
-        strength = "Medium";
-      }
+    function startCountdown() {
+      let time = document.getElementById("seconds").value;
+      document.getElementById("timer").innerText = "Starting...";
 
-      if (pwd.length >= 8 && /[A-Z]/.test(pwd) && /[0-9]/.test(pwd)) {
-        strength = "Strong";
-      }
+      interval = setInterval(function () {
+        document.getElementById("timer").innerText = time + " seconds left";
+        time--;
 
-      if (pwd.length < 6 || !/[a-z]/.test(pwd)) {
-        strength = "Very Weak";
-      }
-
-      document.getElementById("strength").innerText = "Strength: " + strength;
+        if (time === 0) {
+          clearInterval(interval);
+          document.getElementById("timer").innerText = "Time's up!";
+        }
+      }, 1000);
     }
   </script>
 </body>
