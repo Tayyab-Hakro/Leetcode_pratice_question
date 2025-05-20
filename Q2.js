@@ -4,7 +4,6 @@ function shipWithinDays(weights, days) {
   let low = Math.max(...weights);
   // Maximum capacity: agar ek din mein sab uthayein
   let high = weights.reduce((a, b) => a + b, 0);
-    console.log(high)
   // Binary search between low and high capacity
   while (low < high) {
     let mid = Math.floor((low + high) / 2); // Middle capacity try kar rahe hain
