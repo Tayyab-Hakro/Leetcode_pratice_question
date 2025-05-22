@@ -4,8 +4,23 @@
  * @return {number[][]}
  */
 var mergeSimilarItems = function(items1, items2) {
-    let res = []
-    let val = items1.map((item) => item[0] === items2[0] ? item[1] += items2[1] : res.push(item))
-    console.log(val)
-};
+  const map = new Map();
+
+  // Add items from items1
+  for (const [value, weight] of items1) {
+    map.set(value, (map.get(value) || 0) + weight);
+  }
+
+  // Add items from items2
+  for (const [value, weight] of items2) {
+    map.set(value, (map.get(value) || 0) + weight);
+  }
+
+  // Convert map to sorted result array
+  const result = Array.from(map.entries())
+    .sort((a, b) => a[0] - b[0]) // sort by value (index 0)
+    .map(([value, weight]) => [value, weight]); // format as [value, weight]
+
+  return result;
+}
 console.log(mergeSimilarItems([[1,1],[4,5],[3,8]],  [[3,1],[1,5]]))
