@@ -1,7 +1,13 @@
 function Check(word){
-for(let i =0 ; i<word.length ; i++){
-    if(word[i-1] === word[i] ){
-        return word[i]
+    let match = new Set()
+for(let char of word){
+    if(match.has(char)){
+        return char
     }
-}}
-console.log(Check( "abccbaacz"))
+    match.add(char)
+
+}
+
+}
+console.log(Check("abccbaacz"))
+console.log(Check("nwcn"))
