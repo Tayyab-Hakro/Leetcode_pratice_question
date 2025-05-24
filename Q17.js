@@ -3,7 +3,14 @@
  * @return {number}
  */
 var findMaxK = function(nums) {
-let min =  Math.min(...nums)
-console.log(min)
+    const numSet = new Set(nums);
+    let maxK = -1;
+
+    for (let num of nums) {
+        if (num > 0 && numSet.has(-num)) {
+            maxK = Math.max(maxK, num);
+        }
+    }
+
+    return maxK;
 };
-console.log(findMaxK([-1,2,-3,3]))
