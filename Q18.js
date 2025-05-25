@@ -4,17 +4,14 @@
  */
 var splitNum = function(num) {
     num  = num.toString().split("").sort()
-let res  = []
-let empty  = []
-for(let i = 0 ; i<num.length ; i++){
-    if(parseInt(num[i] % 2) === 0){
-        res.push(num[i])
-    }else{
-        empty.push(num[i])
-
+    let num1  = "" ; let num2 = ""
+    for(let i = 0 ; i<num.length ; i++ ){
+        if(i %2  === 0){
+            num1 += num[i]
+        }else{
+            num2 +=num[i]
+        }
     }
-}
-let joined = res.toString().split("").join("")
-console.log(joined)
-};
+    return parseInt(num1) + parseInt(num2)
+    };
 console.log(splitNum(4325))
