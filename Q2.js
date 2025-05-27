@@ -2,6 +2,7 @@
 function shipWithinDays(weights, days) {
   // Minimum capacity: har hal mein largest package ko uthana padega
   let low = Math.max(...weights);
+  console.log(low)
   // Maximum capacity: agar ek din mein sab uthayein
   let high = weights.reduce((a, b) => a + b, 0);
   // Binary search between low and high capacity
