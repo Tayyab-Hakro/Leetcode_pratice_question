@@ -1,12 +1,18 @@
-/**
- * @param {string} num
- * @return {boolean}
- */
-var digitCount = function(num) {
-    let freq = {}
-    for(let char of num){
-        freq[char] = (freq[char] || 0) +1
+var findTheDistanceValue = function(arr1, arr2, d) {
+    let count = 0;
+    
+    for (let i = 0; i < arr1.length; i++) {
+        let isValid = true;
+        for (let j = 0; j < arr2.length; j++) {
+            if (Math.abs(arr1[i] - arr2[j]) <= d) {
+                isValid = false;
+                break;
+            }
+        }
+        if (isValid) {
+            count++;
+        }
     }
-    return freq
+    
+    return count;
 };
-console.log(digitCount("1210"))
